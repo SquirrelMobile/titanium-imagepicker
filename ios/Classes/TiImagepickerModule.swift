@@ -10,10 +10,23 @@ import UIKit
 import TitaniumKit
 import YPImagePicker
 
+enum TiImagePickerMode: Int {
+  case library = 0
+  case photo = 1
+  case all = 2
+}
+
 @objc(TiImagepickerModule)
 class TiImagepickerModule: TiModule {
-
-  public let testProperty: String = "Hello World"
+  
+  @objc(IMAGE_PICKER_MODE_LIBRARY)
+  let IMAGE_PICKER_MODE_LIBRARY = TiImagePickerMode.library.rawValue
+  
+  @objc(IMAGE_PICKER_MODE_PHOTO)
+  let IMAGE_PICKER_MODE_PHOTO = TiImagePickerMode.photo.rawValue
+  
+  @objc(IMAGE_PICKER_MODE_ALL)
+  let IMAGE_PICKER_MODE_ALL = TiImagePickerMode.all.rawValue
 
   func moduleGUID() -> String {
     return "8477e94d-ea5f-4fe6-8f6a-1e6bacbda2d7"
@@ -34,6 +47,7 @@ class TiImagepickerModule: TiModule {
     guard let callback: KrollCallback = options["callback"] as? KrollCallback else { return }
 
     let forceSquare = options["forceSquare"] as? Bool ?? false
+    let mode = TiImagePickerMode(rawValue: options["mode"] as? Int ?? 2)
 
     let skipSelectionsGallery = options["skipSelectionsGallery"] as? Bool ?? true
     let showsPhotoFilters = options["showsPhotoFilters"] as? Bool ?? false
@@ -45,13 +59,20 @@ class TiImagepickerModule: TiModule {
 
     // Some hardcoded values that may become configurable in the future
     config.showsPhotoFilters = showsPhotoFilters
-    config.startOnScreen = .library
-    if enablePhoto != false {
-      config.screens = [.library, .photo]
-    }else{
-      config.screens = [.library]
-    }
     config.shouldSaveNewPicturesToAlbum = shouldSaveNewPicturesToAlbum
+
+    if mode == TiImagePickerMode.all {
+      config.startOnScreen = .library
+      config.screens = [.library, .photo]
+    } else if mode == TiImagePickerMode.library {
+      config.startOnScreen = .library
+      config.screens = [.library]
+    } else if mode == TiImagePickerMode.photo {
+       config.startOnScreen = .photo
+       config.screens = [.photo]
+    }
+
+    config.shouldSaveNewPicturesToAlbum = false
     config.onlySquareImagesFromCamera = forceSquare
     config.library.onlySquare = forceSquare
     config.showsCrop = .none
