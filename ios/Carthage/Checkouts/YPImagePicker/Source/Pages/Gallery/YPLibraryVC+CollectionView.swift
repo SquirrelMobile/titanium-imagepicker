@@ -98,7 +98,37 @@ extension YPLibraryVC {
     
     /// Checks if there can be selected more items. If no - present warning.
     func checkLimit() {
-        v.maxNumberWarningView.isHidden = !isLimitExceeded || multipleSelectionEnabled == false
+//        v.maxNumberWarningView.isHidden = !isLimitExceeded || multipleSelectionEnabled == false
+        
+        print(selection.count)
+        print(YPConfig.library.minNumberOfItems)
+        print(!isLimitExceeded)
+        if(!isLimitExceeded){
+            //afficher minimum
+//            print("afficher minimum")
+            if(selection.count >= YPConfig.library.minNumberOfItems){
+//                print("on cache")
+                v.maxNumberWarningView.isHidden = true
+            }else {
+//                print("on affiche")
+                v.maxNumberWarningView.isHidden = false
+                if(YPConfig.library.minNumberOfItems > 1){
+                    v.maxNumberWarningLabel.text = String(format: YPConfig.wordings.warningMaxItemsMin, YPConfig.library.minNumberOfItems)
+                }else{
+                    v.maxNumberWarningLabel.text = String(format: YPConfig.wordings.warningMaxItemsMinNos, YPConfig.library.minNumberOfItems)
+                }
+            }
+        }else{
+            //afficher maximum
+//            print("afficher maximum")
+            v.maxNumberWarningView.isHidden = false
+            if(YPConfig.library.minNumberOfItems > 1){
+                v.maxNumberWarningLabel.text = String(format: YPConfig.wordings.warningMaxItemsLimit, YPConfig.library.maxNumberOfItems)
+            }else{
+                v.maxNumberWarningLabel.text = String(format: YPConfig.wordings.warningMaxItemsLimitNos, YPConfig.library.maxNumberOfItems)
+            }
+        }
+        
     }
 }
 

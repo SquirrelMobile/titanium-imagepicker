@@ -19,4 +19,7 @@
 "YPImagePickerVideoDurationTitle" = "Durée de votre vidéo";
 "YPImagePickerVideoTooLong" = "La durée d'une vidéo ne doit pas dépasser %@ secondes";
 "YPImagePickerVideoTooShort" = "La vidéo doit durer %@ secondes ou plus";
-"YPImagePickerWarningItemsLimit" = "La limite est de %d photos ou vidéos";
+"YPImagePickerWarningItemsLimit" = "La limite est de %d photos";
+"YPImagePickerWarningItemsLimitNos" = "La limite est de %d photo";
+"YPImagePickerWarningItemsMin" = "%d photos minimum";
+"YPImagePickerWarningItemsMinNos" = "%d photo minimum";

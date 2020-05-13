@@ -64,7 +64,7 @@ final class YPLibraryView: UIView {
         // Style
         maxNumberWarningView.backgroundColor = UIColor(r: 246, g: 248, b: 248)
         maxNumberWarningLabel.font = UIFont(name: "Helvetica Neue", size: 14)
-        maxNumberWarningView.isHidden = true
+//        maxNumberWarningView.isHidden = true
     }
     
     /// When video is processing this bar appears

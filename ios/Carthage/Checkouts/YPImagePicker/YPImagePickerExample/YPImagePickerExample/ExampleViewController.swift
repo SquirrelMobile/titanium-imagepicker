@@ -142,11 +142,11 @@ class ExampleViewController: UIViewController {
         /* Defines if the bottom bar should be hidden when showing the picker. Default is false */
         config.hidesBottomBar = false
 
-        config.library.maxNumberOfItems = 5
+        config.library.maxNumberOfItems = 1
         
         /* Disable scroll to change between mode */
         // config.isScrollToChangeModesEnabled = false
-//        config.library.minNumberOfItems = 2
+        config.library.minNumberOfItems = 1
         
         /* Skip selection gallery after multiple selections */
         // config.library.skipSelectionsGallery = true

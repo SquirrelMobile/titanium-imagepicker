@@ -23,28 +23,28 @@ This started as a parity effort via [@prashantsaini1/titanium-imagepicker](https
 - Opens the inbuilt gallery with a 3x3 default grid-view.
 - Takes following arguments in a single dictionary object. (All arguments are optional though)
 
-| Argument                     | Description                                                                                | Default Value                          | Platform     |
-| ---------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------- | ------------ |
-| String **doneButtonTitle**   | Title of the OK button which calls the callback method                                     | Done                                   | Android, iOS |
-| String **nextButtonTitle**   | Title of the "Next" button                                                                 | Next                                   | iOS          |
-| String **cancelButtonTitle** | Title of the "Cancel" button                                                               | Cancel                                 | iOS          |
-| String **cameraTitle**       | Title of the "Photo" button                                                                | Photo                                  | iOS          |
-| String **libraryTitle**      | Title of the "Library" button                                                              | Library                                | iOS          |
-| String **albumsTitle**       | Title of the "Albums" button                                                               | Albums                                 | iOS          |
-| Bool **forceSquare**         | Force images to be squRE                                                                   | `false`                                | iOS          |
-| int **columnCount**          | Number of grid-view columns to show in gallery                                             | 3 (2 to 5 on Android, no limit on iOS) | , iOS        |
-| int **maxImageSelection**    | Maximum number of images to select. Can be used for single image selection by passing as 1 | No limit                               | Android      |
-| function **callback**        | Callback method to get results into. See below example for its usage                       | none                                   | Android, iOS |
-| skipSelectionsGallery        | skip the selections gallery                                                                | `false`                                | iOS          |
-| showsPhotoFilters            | shows photo filters                                                                        | `false`                                | iOS          |
-| shouldSaveNewPicturesToAlbum | save new pictures to album                                                                 | `false`                                | iOS          |
-| defaultMultipleSelection     | default multiple selection                                                                 | `false`                                | iOS          |
-| enablePhoto                  | enable or disable photo                                                                    | `false`                                | iOS          |
-| minNumberOfItems             | min number of photos                                                                  | 1                                      | iOS          |
-| mode             | image selection mode (IMAGE_PICKER_MODE_ALL, IMAGE_PICKER_MODE_PHOTO, IMAGE_PICKER_MODE_LIBRARY)                                                                 | IMAGE_PICKER_MODE_ALL                                      | iOS          |
+| Argument                     | Description                                                                                      | Default Value                          | Platform     |
+| ---------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------- | ------------ |
+| String **doneButtonTitle**   | Title of the OK button which calls the callback method                                           | Done                                   | Android, iOS |
+| String **nextButtonTitle**   | Title of the "Next" button                                                                       | Next                                   | iOS          |
+| String **cancelButtonTitle** | Title of the "Cancel" button                                                                     | Cancel                                 | iOS          |
+| String **cameraTitle**       | Title of the "Photo" button                                                                      | Photo                                  | iOS          |
+| String **libraryTitle**      | Title of the "Library" button                                                                    | Library                                | iOS          |
+| String **albumsTitle**       | Title of the "Albums" button                                                                     | Albums                                 | iOS          |
+| Bool **forceSquare**         | Force images to be squRE                                                                         | `false`                                | iOS          |
+| int **columnCount**          | Number of grid-view columns to show in gallery                                                   | 3 (2 to 5 on Android, no limit on iOS) | , iOS        |
+| int **maxImageSelection**    | Maximum number of images to select. Can be used for single image selection by passing as 1       | No limit                               | Android      |
+| function **callback**        | Callback method to get results into. See below example for its usage                             | none                                   | Android, iOS |
+| skipSelectionsGallery        | skip the selections gallery                                                                      | `false`                                | iOS          |
+| showsPhotoFilters            | shows photo filters                                                                              | `false`                                | iOS          |
+| shouldSaveNewPicturesToAlbum | save new pictures to album                                                                       | `false`                                | iOS          |
+| defaultMultipleSelection     | default multiple selection                                                                       | `false`                                | iOS          |
+| enablePhoto                  | enable or disable photo                                                                          | `false`                                | iOS          |
+| minNumberOfItems             | min number of photos                                                                             | 1                                      | iOS          |
+| mode                         | image selection mode (IMAGE_PICKER_MODE_ALL, IMAGE_PICKER_MODE_PHOTO, IMAGE_PICKER_MODE_LIBRARY) | IMAGE_PICKER_MODE_ALL                  | iOS          |
 
 ```javascript
-import ImagePicker from 'ti.imagepicker';
+import ImagePicker from "ti.imagepicker";
 
 ImagePicker.openGallery({
   callback: function(e) {
@@ -63,9 +63,13 @@ ImagePicker.openGallery({
 
 go INTO ios folder and install YPImagePicker
 
+https://github.com/Carthage/Carthage/issues/2887
+
 ```
-carthage update
+ carthage update --platform iOS --no-use-binaries
 ```
+
+go INTO ios/Carthage/Build/iOS folder then copy these 3 folder : PryntTrimmerView.framework, Stevia.framework and YPImagePicker.framework and paste these folder into ios/platform
 
 build the module
 

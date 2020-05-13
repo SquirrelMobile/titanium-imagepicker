@@ -60,8 +60,12 @@ public class YPLibraryVC: UIViewController, YPPermissionCheckable {
         if YPConfig.library.defaultMultipleSelection {
             multipleSelectionButtonTapped()
         }
-        v.assetViewContainer.multipleSelectionButton.isHidden = !(YPConfig.library.maxNumberOfItems > 1)
-        v.maxNumberWarningLabel.text = String(format: YPConfig.wordings.warningMaxItemsLimit, YPConfig.library.maxNumberOfItems)
+//        v.assetViewContainer.multipleSelectionButton.isHidden = !(YPConfig.library.maxNumberOfItems > 1)
+        if(YPConfig.library.minNumberOfItems > 1){
+           v.maxNumberWarningLabel.text = String(format: YPConfig.wordings.warningMaxItemsMin, YPConfig.library.minNumberOfItems)
+        }else{
+          v.maxNumberWarningLabel.text = String(format: YPConfig.wordings.warningMaxItemsMinNos, YPConfig.library.minNumberOfItems)
+        }
     }
     
     // MARK: - View Lifecycle
@@ -164,7 +168,7 @@ public class YPLibraryVC: UIViewController, YPPermissionCheckable {
             selection.removeAll()
             addToSelection(indexPath: IndexPath(row: currentlySelectedIndex, section: 0))
         }
-
+        selection.removeAll()
         v.assetViewContainer.setMultipleSelectionMode(on: multipleSelectionEnabled)
         v.collectionView.reloadData()
         checkLimit()

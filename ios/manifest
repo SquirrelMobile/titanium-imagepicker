@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 3.0.3
+version: 3.0.4
 apiversion: 2
 architectures: armv7 arm64 i386 x86_64
 description: titanium-imagepicker is a Swift based Titanium module.
@@ -15,4 +15,4 @@ name: titanium-imagepicker
 moduleid: ti.imagepicker
 guid: 8477e94d-ea5f-4fe6-8f6a-1e6bacbda2d7
 platform: iphone
-minsdk: 8.0.0
+minsdk: 9.0.1
